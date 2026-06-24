@@ -1,0 +1,2571 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="JNR Traqueur — explore, note et compare les goûts Puff JNR Falcon 16K et Falcon X 18K. Catalogue premium avec rendu 3D.">
+  <meta name="keywords" content="JNR, JNR Falcon, Puff JNR, Falcon 16K, Falcon X 18K, goûts puff, vape, e-cigarette">
+  <meta name="theme-color" content="#0a0a0f">
+  <meta name="robots" content="index, follow">
+  <title>JNR Traqueur — Catalogue premium des goûts Puff JNR</title>
+
+  <!-- Partage réseaux sociaux (Open Graph / Twitter) -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="JNR Traqueur">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:title" content="JNR Traqueur — Catalogue des goûts Puff JNR Falcon">
+  <meta property="og:description" content="Explore, note et compare les goûts JNR Falcon 16K & Falcon X 18K. Rendu 3D premium.">
+  <meta property="og:image" content="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%232d1b69'/%3E%3Cpath%20d='M32%2014%20L19%2028%20L29%2028%20L21%2046%20L32%2038%20L43%2046%20L35%2028%20L45%2028%20Z'%20fill='%23ffffff'/%3E%3C/svg%3E">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="JNR Traqueur — Goûts Puff JNR Falcon">
+  <meta name="twitter:description" content="Les goûts JNR Falcon 16K & 18K à explorer, noter et comparer.">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%232d1b69'/%3E%3Cpath%20d='M32%2014%20L19%2028%20L29%2028%20L21%2046%20L32%2038%20L43%2046%20L35%2028%20L45%2028%20Z'%20fill='%23ffffff'/%3E%3C/svg%3E">
+
+  <!-- Données structurées (SEO) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      { "@type": "Organization", "name": "JNR Traqueur", "description": "Catalogue des goûts Puff JNR Falcon." },
+      { "@type": "WebSite", "name": "JNR Traqueur", "inLanguage": "fr-FR", "description": "Explore, note et compare les goûts Puff JNR Falcon 16K & Falcon X 18K." }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+/* JNR Taste Atlas - Premium UI */
+
+:root {
+  --bg: #0a0a0f;
+  --text: #ffffff;
+  --text-muted: rgba(255, 255, 255, 0.55);
+  --glass: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --glass-hover: rgba(255, 255, 255, 0.14);
+  --radius: 16px;
+  --radius-pill: 100px;
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  --transition: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: 0.25s ease;
+  --hero-bg: #2d1b69;
+  --hero-accent: #a78bfa;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+input, select { font-family: inherit; }
+
+.container { width: min(1200px, 92vw); margin-inline: auto; }
+
+/* ── Dynamic background ── */
+.bg-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: var(--hero-bg);
+  transition: background var(--transition);
+}
+
+.bg-glow {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse 70% 60% at 50% 40%, var(--hero-accent) 0%, transparent 65%);
+  opacity: 0.25;
+  transition: opacity var(--transition), background var(--transition);
+}
+
+/* ── Header ── */
+.header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 2.5rem;
+  transition: background var(--transition-fast);
+}
+
+.header.scrolled {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(20px);
+}
+
+.logo {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.35rem;
+  letter-spacing: -0.02em;
+  z-index: 1;
+}
+
+.logo span { font-weight: 500; opacity: 0.7; }
+
+.nav-glass {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.25rem;
+  padding: 0.35rem;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-pill);
+  backdrop-filter: blur(24px);
+}
+
+.nav-link {
+  padding: 0.55rem 1.25rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  border-radius: var(--radius-pill);
+  color: var(--text-muted);
+  transition: all var(--transition-fast);
+}
+
+.nav-link:hover { color: var(--text); }
+.nav-link.active {
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--text);
+}
+
+.fav-header-btn {
+  position: relative;
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(16px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+  z-index: 1;
+}
+
+.fav-header-btn:hover { background: var(--glass-hover); }
+
+.fav-count {
+  position: absolute;
+  top: -4px; right: -4px;
+  min-width: 18px; height: 18px;
+  padding: 0 4px;
+  background: #ff4d6d;
+  border-radius: 100px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-btn {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px;
+  z-index: 1;
+}
+
+.menu-btn span {
+  display: block;
+  width: 22px; height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: var(--transition-fast);
+}
+
+/* ── Hero Carousel ── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.hero-inner {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 6rem 2.5rem 2rem;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Titres géants avec blur */
+.title-track {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.title-slide {
+  position: absolute;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(3rem, 12vw, 9rem);
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: rgba(255, 255, 255, 0.12);
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.8s ease,
+              filter 0.8s ease;
+  will-change: transform, opacity, filter;
+}
+
+.title-slide.active {
+  color: rgba(255, 255, 255, 0.18);
+  filter: blur(0px);
+  transform: translateX(0) scale(1);
+  opacity: 1;
+}
+
+.title-slide.prev {
+  filter: blur(8px);
+  transform: translateX(-30%) scale(0.85);
+  opacity: 0.4;
+}
+
+.title-slide.next {
+  filter: blur(12px);
+  transform: translateX(30%) scale(0.75);
+  opacity: 0;
+}
+
+.title-slide.exit-left {
+  filter: blur(16px);
+  transform: translateX(-60%) scale(0.6);
+  opacity: 0;
+}
+
+/* Visuels circulaires */
+.visual-stage {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: clamp(280px, 45vh, 420px);
+  z-index: 2;
+}
+
+.visual-prev {
+  position: absolute;
+  left: calc(50% - 280px);
+  width: 120px; height: 120px;
+  opacity: 0.35;
+  transition: all var(--transition);
+}
+
+.circle-blur, .circle-main {
+  width: 100%; height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+}
+
+.circle-blur {
+  background: radial-gradient(circle, var(--hero-accent) 0%, transparent 70%);
+  filter: blur(20px);
+  transform: scale(0.9);
+}
+
+.visual-main {
+  position: relative;
+  width: clamp(220px, 32vw, 320px);
+  height: clamp(220px, 32vw, 320px);
+  transition: transform var(--transition);
+}
+
+.circle-main {
+  background: radial-gradient(circle at 40% 35%, rgba(255,255,255,0.15) 0%, transparent 50%),
+              radial-gradient(circle, var(--hero-accent) 0%, transparent 75%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    0 0 80px rgba(0, 0, 0, 0.4),
+    inset 0 0 60px rgba(255, 255, 255, 0.05);
+}
+
+.circle-shimmer {
+  position: absolute;
+  inset: -50%;
+  background: conic-gradient(from 0deg, transparent, rgba(255,255,255,0.08), transparent);
+  animation: shimmer 8s linear infinite;
+}
+
+@keyframes shimmer {
+  to { transform: rotate(360deg); }
+}
+
+.puff-device {
+  position: relative;
+  z-index: 1;
+  width: 55%;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.5));
+  transition: transform var(--transition), filter var(--transition);
+}
+
+.hero.sliding .puff-device {
+  filter: blur(4px) drop-shadow(0 20px 40px rgba(0, 0, 0, 0.5));
+  transform: scale(0.95);
+}
+
+.puff-photo {
+  width: auto;
+  height: clamp(160px, 28vh, 240px);
+  max-width: 90%;
+  object-fit: contain;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.55));
+  transition: transform var(--transition), filter var(--transition), opacity 0.4s ease;
+}
+
+.hero.sliding .puff-photo {
+  filter: blur(4px) drop-shadow(0 20px 40px rgba(0, 0, 0, 0.55));
+  transform: scale(0.95);
+  opacity: 0.7;
+}
+
+.puff-svg { width: 100%; height: auto; }
+
+/* Hero bottom */
+.hero-bottom {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: end;
+  gap: 2rem;
+  padding-top: 2rem;
+  z-index: 3;
+}
+
+.hero-info { max-width: 340px; }
+
+.hero-model {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.hero-desc {
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.hero-meta {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.dot-sep { margin: 0 0.5rem; opacity: 0.4; }
+
+.rating-widget { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+
+.rating-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+}
+
+.stars { display: flex; gap: 2px; }
+
+.star-btn {
+  width: 28px; height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.25);
+  transition: color var(--transition-fast), transform var(--transition-fast);
+  border-radius: 4px;
+}
+
+.star-btn:hover { transform: scale(1.15); }
+.star-btn.active { color: #ffd700; }
+
+.rating-avg {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.discover-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  transition: color var(--transition-fast);
+  animation: bounce 2s ease infinite;
+}
+
+.discover-link:hover { color: var(--text); }
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+
+.hero-controls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1.25rem;
+}
+
+.slide-counter {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+.arrow-group { display: flex; gap: 0.5rem; }
+
+.arrow-btn {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--glass-border);
+  background: var(--glass);
+  backdrop-filter: blur(16px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.arrow-btn:hover {
+  background: var(--glass-hover);
+  transform: scale(1.05);
+}
+
+.heart-btn {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  border: 1px solid var(--glass-border);
+  background: var(--glass);
+  backdrop-filter: blur(16px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.heart-btn:hover { background: var(--glass-hover); }
+.heart-btn.active { background: rgba(255, 77, 109, 0.2); border-color: #ff4d6d; }
+.heart-btn.active svg { fill: #ff4d6d; stroke: #ff4d6d; }
+
+/* Search float */
+.search-float {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1.25rem;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-pill);
+  backdrop-filter: blur(24px);
+  width: min(420px, 90vw);
+  z-index: 10;
+  opacity: 0;
+  animation: fadeInUp 1s 0.5s ease forwards;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+.search-float svg { flex-shrink: 0; opacity: 0.5; }
+
+.search-float input {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  color: var(--text);
+  font-size: 0.9rem;
+}
+
+.search-float input::placeholder { color: var(--text-muted); }
+
+.search-float kbd {
+  font-size: 0.65rem;
+  padding: 0.2rem 0.5rem;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  color: var(--text-muted);
+}
+
+/* ── Pricing strip ── */
+.pricing-strip {
+  position: relative;
+  z-index: 2;
+  padding: 4rem 0;
+  background: linear-gradient(180deg, transparent, rgba(0,0,0,0.6));
+}
+
+.pricing-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.price-card {
+  padding: 2rem;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  backdrop-filter: blur(20px);
+  transition: transform var(--transition-fast);
+}
+
+.price-card:hover { transform: translateY(-4px); }
+
+.price-card.featured {
+  border-color: rgba(167, 139, 250, 0.4);
+  background: rgba(167, 139, 250, 0.08);
+}
+
+.price-badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.price-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.price-big {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 1.25rem;
+}
+
+.price-big span { font-size: 1.5rem; opacity: 0.6; }
+
+.price-card ul { list-style: none; }
+
+.price-card li {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  padding: 0.35rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.price-card li::before { content: '-> '; opacity: 0.4; }
+
+/* ── Catalogue ── */
+.section { position: relative; z-index: 2; padding: 5rem 0; }
+
+.section-tag {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.section h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.section-desc { color: var(--text-muted); margin-top: 0.5rem; font-size: 0.95rem; }
+
+.catalogue { background: rgba(0, 0, 0, 0.5); }
+
+.catalogue-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.catalogue-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 1rem;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-pill);
+  min-width: 220px;
+}
+
+.search-bar input {
+  background: none;
+  border: none;
+  outline: none;
+  color: var(--text);
+  font-size: 0.88rem;
+  width: 100%;
+}
+
+.filter-group { display: flex; gap: 0.35rem; flex-wrap: wrap; }
+
+.filter-btn {
+  padding: 0.5rem 1rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--glass-border);
+  background: transparent;
+  color: var(--text-muted);
+  transition: all var(--transition-fast);
+}
+
+.filter-btn:hover { color: var(--text); border-color: rgba(255,255,255,0.2); }
+
+.filter-btn.active {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--text);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.sort-select {
+  padding: 0.5rem 1rem;
+  font-size: 0.78rem;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-pill);
+  color: var(--text);
+  cursor: pointer;
+  appearance: none;
+  padding-right: 2rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath fill='%23888' d='M5 7L1 3h8z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+}
+
+/* Flavor grid cards */
+.flavor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.flavor-card {
+  position: relative;
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.flavor-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--card-accent, #666) 0%, transparent 60%);
+  opacity: 0.15;
+  transition: opacity var(--transition-fast);
+}
+
+.flavor-card:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+
+.flavor-card:hover::before { opacity: 0.25; }
+
+.flavor-card-top {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.flavor-model {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.6rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 100px;
+}
+
+.flavor-fav-btn {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+  z-index: 2;
+}
+
+.flavor-fav-btn.active svg { fill: #ff4d6d; stroke: #ff4d6d; }
+
+.flavor-name {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 0.75rem 0 0.5rem;
+}
+
+.flavor-thumb {
+  position: relative;
+  z-index: 1;
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  margin-bottom: 0.25rem;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.35));
+}
+
+.flavor-card-bottom {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flavor-price {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.flavor-stars { font-size: 0.85rem; color: #ffd700; letter-spacing: 1px; }
+
+.no-results {
+  text-align: center;
+  color: var(--text-muted);
+  padding: 3rem;
+  font-size: 1rem;
+}
+
+/* ── Stats ── */
+.stats { background: rgba(0, 0, 0, 0.3); }
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.stat-card {
+  padding: 1.75rem;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  text-align: center;
+}
+
+.stat-num {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 0.35rem;
+}
+
+.stat-label {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.top-rated {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.top-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1.25rem;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.top-item:hover { background: var(--glass-hover); }
+
+.top-item-rank {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--text-muted);
+  min-width: 28px;
+}
+
+.top-item-stars { color: #ffd700; }
+
+/* ── Modal ── */
+.modal {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  width: min(520px, 92vw);
+  max-height: 85vh;
+  padding: 0;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  background: rgba(15, 15, 25, 0.95);
+  backdrop-filter: blur(40px);
+  color: var(--text);
+  overflow: auto;
+  z-index: 500;
+}
+
+.modal::backdrop {
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+}
+
+.modal-sm { width: min(400px, 92vw); }
+
+.modal-close {
+  position: absolute;
+  top: 1rem; right: 1rem;
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: var(--glass);
+  font-size: 1.4rem;
+  line-height: 1;
+  z-index: 1;
+  transition: background var(--transition-fast);
+}
+
+.modal-close:hover { background: var(--glass-hover); }
+
+.modal-content { padding: 2.5rem; }
+
+.modal h3 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  padding: 2rem 2rem 1rem;
+}
+
+.fav-list { padding: 0 2rem 2rem; display: flex; flex-direction: column; gap: 0.5rem; }
+
+.fav-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  background: var(--glass);
+  border-radius: 10px;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.fav-item:hover { background: var(--glass-hover); }
+
+.modal-flavor-bg {
+  height: 290px;
+  border-radius: var(--radius) var(--radius) 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.modal-flavor-bg .dev-svg { width: 160px; height: 266px; opacity: 1; }
+
+.modal-detail h2 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.modal-detail .modal-model {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+.modal-specs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin: 1.25rem 0;
+}
+
+.modal-spec {
+  padding: 0.75rem;
+  background: var(--glass);
+  border-radius: 10px;
+  text-align: center;
+}
+
+.modal-spec strong { display: block; font-size: 1rem; }
+.modal-spec span { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; }
+
+/* ── Footer ── */
+.footer {
+  position: relative;
+  z-index: 2;
+  padding: 2.5rem;
+  text-align: center;
+  border-top: 1px solid var(--glass-border);
+}
+
+.footer p { font-size: 0.82rem; color: var(--text-muted); }
+
+.footer-disclaimer { margin-top: 0.5rem; font-size: 0.72rem !important; opacity: 0.6; }
+
+/* ══════════════════════════════════════════
+   Texture premium + Modèle 3D de la Puff
+   ══════════════════════════════════════════ */
+.bg-grain {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.045;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ── Scène 3D du hero ── */
+.scene3d {
+  position: relative;
+  width: clamp(160px, 22vw, 215px);
+  height: clamp(290px, 42vh, 390px);
+  perspective: 1300px;
+  perspective-origin: 50% 42%;
+  z-index: 3;
+}
+.circle-main { overflow: visible; }
+.circle-shimmer { clip-path: circle(50%); }
+
+.tilt3d {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero-device {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: clamp(185px, 25vw, 245px);
+  height: clamp(310px, 52vh, 410px);
+  animation: floatY 6s ease-in-out infinite;
+  filter: drop-shadow(0 38px 46px rgba(0, 0, 0, 0.6));
+}
+.hero-device .dev-svg { width: 100%; height: 100%; }
+@keyframes floatY {
+  0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+  50%      { transform: translate(-50%, -50%) translateY(-16px); }
+}
+
+.device3d {
+  --dw: 132px;
+  --dh: 284px;
+  --dd: 52px;
+  position: absolute;
+  top: 50%; left: 50%;
+  width: var(--dw);
+  height: var(--dh);
+  transform-style: preserve-3d;
+  animation: floatSpin 18s ease-in-out infinite;
+  filter: drop-shadow(0 40px 50px rgba(0, 0, 0, 0.55));
+}
+
+@keyframes floatSpin {
+  0%, 100% { transform: translate(-50%, -50%) translateY(4px)  rotateX(-9deg) rotateY(-27deg); }
+  50%      { transform: translate(-50%, -50%) translateY(-18px) rotateX(-2deg) rotateY(27deg); }
+}
+
+.face { position: absolute; backface-visibility: hidden; }
+
+.face-front, .face-back { width: var(--dw); height: var(--dh); border-radius: 24px; }
+
+.face-front {
+  transform: translateZ(calc(var(--dd) / 2));
+  background:
+    linear-gradient(180deg, #24242e 0, #15151c 6.5%, transparent 6.5%),
+    linear-gradient(140deg, var(--dev-accent, #8a8a96) 0%, var(--dev-bg, #26263a) 50%, #06060b 100%);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: inset 0 2px 12px rgba(255, 255, 255, 0.22), inset 0 -34px 60px rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+}
+
+.face-back {
+  transform: rotateY(180deg) translateZ(calc(var(--dd) / 2));
+  background: linear-gradient(140deg, var(--dev-bg, #26263a), #06060b);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.face-left, .face-right {
+  width: var(--dd);
+  height: var(--dh);
+  left: calc(var(--dw) / 2 - var(--dd) / 2);
+  border-radius: 7px;
+}
+
+.face-right {
+  transform: rotateY(90deg) translateZ(calc(var(--dw) / 2));
+  background: linear-gradient(180deg, #15151c 0 6.5%, var(--dev-bg, #26263a) 6.5%, #050509 100%);
+  filter: brightness(0.58);
+}
+
+.face-left {
+  transform: rotateY(-90deg) translateZ(calc(var(--dw) / 2));
+  background: linear-gradient(180deg, #24242e 0 6.5%, var(--dev-accent, #8a8a96) 6.5%, var(--dev-bg, #26263a) 130%);
+  filter: brightness(0.82);
+}
+
+.face-top, .face-bottom {
+  width: var(--dw);
+  height: var(--dd);
+  top: calc(var(--dh) / 2 - var(--dd) / 2);
+  border-radius: 9px;
+}
+
+.face-top {
+  transform: rotateX(90deg) translateZ(calc(var(--dh) / 2));
+  background: radial-gradient(ellipse 58% 70% at 50% 50%, #000 0 36%, #1c1c24 39%, #101017 100%);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+.face-bottom {
+  transform: rotateX(-90deg) translateZ(calc(var(--dh) / 2));
+  background: #050507;
+}
+
+/* Détails de la face avant */
+.dev-gloss {
+  position: absolute;
+  top: 0; left: 7%;
+  width: 24%; height: 100%;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0));
+  filter: blur(2px);
+  pointer-events: none;
+}
+
+.dev-mouthcap {
+  position: absolute;
+  top: -13px; left: 50%;
+  transform: translate(-50%, 0) translateZ(0);
+  width: 46%; height: 21px;
+  border-radius: 11px 11px 5px 5px;
+  background: linear-gradient(180deg, #36363f, #101015);
+  box-shadow: inset 0 2px 3px rgba(255, 255, 255, 0.16), 0 6px 11px rgba(0, 0, 0, 0.5);
+}
+.dev-mouthcap::after {
+  content: '';
+  position: absolute;
+  top: 6px; left: 50%;
+  transform: translateX(-50%);
+  width: 52%; height: 5px;
+  border-radius: 5px;
+  background: #000;
+  opacity: 0.65;
+}
+
+.dev-brand {
+  position: absolute;
+  top: 12.5%; left: 0; right: 0;
+  text-align: center;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.95rem;
+  letter-spacing: 0.22em;
+  color: rgba(255, 255, 255, 0.92);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.dev-screen {
+  position: absolute;
+  left: 50%; top: 37%;
+  transform: translateX(-50%);
+  width: 84%;
+  padding: 0.6rem 0.3rem 0.5rem;
+  border-radius: 13px;
+  text-align: center;
+  background: #0a0c12;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 0 16px rgba(0, 0, 0, 0.7);
+}
+.device3d.is-x .dev-screen {
+  background: radial-gradient(ellipse at 50% 22%, rgba(255, 255, 255, 0.06), #07080d 78%);
+  box-shadow: inset 0 0 18px rgba(0, 0, 0, 0.7), 0 0 16px -2px var(--dev-accent, #888);
+}
+
+.dev-val {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.8rem;
+  color: #fff;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  white-space: nowrap;
+}
+.device3d.is-x .dev-val {
+  color: var(--dev-accent, #fff);
+  text-shadow: 0 0 9px var(--dev-accent, #fff);
+}
+
+.dev-unit {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.5rem;
+  letter-spacing: 0.28em;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.dev-bar {
+  display: none;
+  margin: 7px auto 0;
+  width: 72%; height: 5px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+}
+.dev-bar i { display: block; width: 68%; height: 100%; border-radius: 3px; background: var(--dev-accent, #888); }
+
+.dev-led {
+  display: none;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  margin: 7px auto 0;
+  background: var(--dev-accent, #888);
+  box-shadow: 0 0 7px var(--dev-accent, #888);
+  animation: ledPulse 1.8s ease-in-out infinite;
+}
+.device3d.is-x .dev-bar, .device3d.is-x .dev-led { display: block; }
+@keyframes ledPulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } }
+
+.dev-model {
+  position: absolute;
+  bottom: 8.5%; left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  padding: 3px 11px;
+  border-radius: 100px;
+  background: rgba(0, 0, 0, 0.38);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* ── Devices SVG (cartes & modale) ── */
+.dev-svg { display: block; }
+
+.flavor-card { perspective: 820px; }
+.flavor-thumb-wrap {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  margin: 0.4rem 0 0.1rem;
+}
+.flavor-thumb-wrap .dev-svg {
+  transform: rotateY(-8deg);
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.flavor-card:hover .flavor-thumb-wrap .dev-svg {
+  transform: rotateY(0deg) translateY(-6px) scale(1.05);
+}
+
+.modal-flavor-bg { perspective: 900px; }
+.modal-flavor-bg .dev-svg {
+  transform: rotateY(-13deg) rotateX(4deg);
+  filter: drop-shadow(0 20px 32px rgba(0, 0, 0, 0.5));
+  animation: modalDeviceFloat 6s ease-in-out infinite;
+}
+@keyframes modalDeviceFloat {
+  0%, 100% { transform: rotateY(-13deg) rotateX(4deg) translateY(0); }
+  50%      { transform: rotateY(-13deg) rotateX(4deg) translateY(-8px); }
+}
+
+/* ── Apparition des cartes ── */
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.flavor-card { animation: cardIn 0.5s both; }
+
+/* ══════════════════════════════════════════
+   Finitions pro : accessibilité, reflet, perf
+   ══════════════════════════════════════════ */
+.skip-link {
+  position: fixed;
+  top: -60px; left: 12px;
+  z-index: 999;
+  padding: 0.6rem 1rem;
+  background: rgba(15, 15, 25, 0.96);
+  border: 1px solid var(--glass-border);
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  backdrop-filter: blur(10px);
+  transition: top 0.2s ease;
+}
+.skip-link:focus { top: 12px; }
+
+.sr-only {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+.flavor-card:focus-visible,
+.top-item:focus-visible,
+.fav-item:focus-visible {
+  outline: 2px solid var(--hero-accent, #a78bfa);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+/* Reflet sous la puff (hero) */
+.hero-device {
+  -webkit-box-reflect: below 4px linear-gradient(transparent 58%, rgba(255, 255, 255, 0.16));
+}
+
+/* Chargement progressif des cartes (perf) */
+.flavor-card {
+  content-visibility: auto;
+  contain-intrinsic-size: 260px 340px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .nav-glass { display: none; }
+  .menu-btn { display: flex; }
+
+  .nav-glass.open {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 70px; left: 50%;
+    transform: translateX(-50%);
+    width: min(300px, 90vw);
+    padding: 0.75rem;
+  }
+
+  .hero-bottom {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .hero-info { max-width: none; }
+  .hero-controls { justify-content: center; }
+  .discover-link { display: none; }
+
+  .visual-prev { left: 5%; width: 80px; height: 80px; }
+
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .pricing-cards { grid-template-columns: 1fr; }
+
+  .catalogue-header { flex-direction: column; align-items: flex-start; }
+}
+
+@media (max-width: 600px) {
+  .header { padding: 1rem 1.25rem; }
+  .hero-inner { padding: 5rem 1.25rem 1.5rem; }
+  .search-float { bottom: 1rem; }
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* Très petits téléphones */
+@media (max-width: 380px) {
+  .hero-device { width: clamp(155px, 62vw, 195px); }
+  .flavor-grid { grid-template-columns: 1fr; }
+  .modal-content { padding: 1.75rem; }
+  .logo { font-size: 1.2rem; }
+}
+
+/* Téléphone en mode paysage / écrans très bas */
+@media (max-height: 560px) and (orientation: landscape) {
+  .hero, .hero-inner { min-height: auto; }
+  .hero-inner { padding: 4.5rem 1.5rem 1.5rem; }
+  .visual-stage { height: auto; }
+  .scene3d { height: clamp(170px, 60vh, 240px); }
+  .hero-device { width: clamp(110px, 34vh, 165px); height: clamp(185px, 66vh, 280px); }
+  .search-float, .discover-link { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+</style>
+</head>
+<body>
+  <a href="#catalogue" class="skip-link">Aller au catalogue</a>
+  <div class="bg-layer" id="bgLayer" aria-hidden="true"></div>
+  <div class="bg-glow" id="bgGlow" aria-hidden="true"></div>
+  <div class="bg-grain" aria-hidden="true"></div>
+
+  <!-- ── Navigation ── -->
+  <header class="header">
+    <a href="#" class="logo">JNR <span>Traqueur</span></a>
+    <nav class="nav-glass" aria-label="Navigation principale">
+      <a href="#hero" class="nav-link active">Accueil</a>
+      <a href="#catalogue" class="nav-link">Catalogue</a>
+      <a href="#tarifs" class="nav-link">Tarifs</a>
+      <a href="#stats" class="nav-link">Stats</a>
+    </nav>
+    <button class="fav-header-btn" id="favHeaderBtn" aria-label="Mes favoris">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      <span class="fav-count" id="favCount">0</span>
+    </button>
+    <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <!-- ── Hero Carousel (style Shify) ── -->
+  <section class="hero" id="hero">
+    <div class="hero-inner">
+      <!-- Titres flous en arrière-plan -->
+      <div class="title-track" id="titleTrack" aria-hidden="true"></div>
+
+      <!-- Visuels circulaires -->
+      <div class="visual-stage">
+        <div class="visual-prev" id="visualPrev" aria-hidden="true">
+          <div class="circle-blur"></div>
+        </div>
+        <div class="visual-main" id="visualMain">
+          <div class="circle-main">
+            <div class="circle-shimmer"></div>
+            <div class="scene3d" id="scene3d">
+              <div class="tilt3d" id="tilt3d">
+                <div class="hero-device" id="heroDevice"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Infos bas -->
+      <div class="hero-bottom">
+        <div class="hero-info">
+          <span class="hero-model" id="heroModel">Falcon 16K</span>
+          <p class="hero-desc" id="heroDesc">Mélange fruité équilibré, vapeur dense et fraîcheur maîtrisée.</p>
+          <div class="hero-meta">
+            <span id="heroPrice">10 EUR</span>
+            <span class="dot-sep">|</span>
+            <span id="heroPuffs">16 000 puffs</span>
+          </div>
+          <!-- Notation -->
+          <div class="rating-widget" id="heroRating">
+            <span class="rating-label">Votre note</span>
+            <div class="stars" id="heroStars" role="group" aria-label="Noter ce gout"></div>
+            <span class="rating-avg" id="heroRatingAvg"></span>
+          </div>
+        </div>
+
+        <a href="#catalogue" class="discover-link">
+          <span>Découvrir</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+        </a>
+
+        <div class="hero-controls">
+          <span class="slide-counter" id="slideCounter">01 / 88</span>
+          <div class="arrow-group">
+            <button class="arrow-btn" id="prevBtn" aria-label="Goût précédent">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <button class="arrow-btn" id="nextBtn" aria-label="Goût suivant">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+          </div>
+          <button class="heart-btn" id="heartBtn" aria-label="Ajouter aux favoris">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Barre recherche flottante -->
+    <div class="search-float">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      <input type="search" id="heroSearch" placeholder="Rechercher un goût..." autocomplete="off" aria-label="Rechercher un goût">
+      <kbd>CtrlK</kbd>
+    </div>
+  </section>
+
+  <!-- ── Tarifs ── -->
+  <section class="section pricing-strip" id="tarifs">
+    <div class="container">
+      <div class="pricing-cards">
+        <article class="price-card" data-model="16K">
+          <span class="price-badge" id="count16Badge">59 saveurs</span>
+          <h3>Falcon 16K</h3>
+          <div class="price-big">10<span>€</span></div>
+          <ul>
+            <li>16 000 bouffées</li>
+            <li>22 ml e-liquid</li>
+            <li>850 mAh | Dual Mesh</li>
+          </ul>
+        </article>
+        <article class="price-card featured" data-model="18K">
+          <span class="price-badge" id="count18Badge">29 saveurs</span>
+          <h3>Falcon X 18K</h3>
+          <div class="price-big">12<span>€</span></div>
+          <ul>
+            <li>18 000 bouffées</li>
+            <li>24 ml e-liquid</li>
+            <li>950 mAh | Écran digital</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Catalogue ── -->
+  <section class="section catalogue" id="catalogue">
+    <div class="container">
+      <div class="catalogue-header">
+        <div>
+          <span class="section-tag">Collection complète</span>
+          <h2>Tous les goûts JNR</h2>
+          <p class="section-desc"><span id="totalCount">88</span> saveurs répertoriées | Notez, filtrez et comparez</p>
+        </div>
+        <div class="catalogue-tools">
+          <div class="search-bar">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+            <input type="search" id="catalogSearch" placeholder="Filtrer par nom..." aria-label="Filtrer le catalogue">
+          </div>
+          <div class="filter-group">
+            <button class="filter-btn active" data-filter="all">Tous</button>
+            <button class="filter-btn" data-filter="16K">16K | 10€</button>
+            <button class="filter-btn" data-filter="18K">18K | 12€</button>
+            <button class="filter-btn" data-filter="favorites">Favoris</button>
+          </div>
+          <select class="sort-select" id="sortSelect" aria-label="Trier">
+            <option value="name">Nom A -> Z</option>
+            <option value="rating">Mieux notés</option>
+            <option value="price-asc">Prix croissant</option>
+            <option value="price-desc">Prix décroissant</option>
+          </select>
+        </div>
+      </div>
+      <div class="flavor-grid" id="flavorGrid"></div>
+      <p class="no-results" id="noResults" hidden>Aucun goût ne correspond à votre recherche.</p>
+    </div>
+  </section>
+
+  <!-- ── Stats ── -->
+  <section class="section stats" id="stats">
+    <div class="container">
+      <span class="section-tag">Tableau de bord</span>
+      <h2>Vos statistiques</h2>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <span class="stat-num" id="statRated">0</span>
+          <span class="stat-label">Goûts notés</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num" id="statFavs">0</span>
+          <span class="stat-label">Favoris</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num" id="statAvg">-</span>
+          <span class="stat-label">Note moyenne</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num" id="statTop">-</span>
+          <span class="stat-label">Meilleur goût</span>
+        </div>
+      </div>
+      <div class="top-rated" id="topRated"></div>
+    </div>
+  </section>
+
+  <!-- ── Modal détail ── -->
+  <dialog class="modal" id="detailModal">
+    <button class="modal-close" id="modalClose" aria-label="Fermer">x</button>
+    <div class="modal-content" id="modalContent"></div>
+  </dialog>
+
+  <!-- ── Modal favoris ── -->
+  <dialog class="modal modal-sm" id="favModal">
+    <button class="modal-close" id="favModalClose" aria-label="Fermer">x</button>
+    <h3>Mes favoris</h3>
+    <div class="fav-list" id="favList"></div>
+  </dialog>
+
+  <footer class="footer">
+    <p>JNR Traqueur | Catalogue premium | <span id="footerCount">88</span> saveurs | 16K à 10€ | 18K à 12€</p>
+    <p class="footer-disclaimer">Réservé aux adultes (+18). Vapotage = produit addictif.</p>
+  </footer>
+
+  <script>
+const IMAGE_MAP = {
+  "16k-blackberry-red-raspberry": "https://puffvapestore.com/wp-content/uploads/2025/03/pvajf16000-13.jpg",
+  "16k-blue-razz-ice": "https://puffvapestore.com/wp-content/uploads/2025/03/pvajf16000-9.jpg",
+  "16k-blueberry-pomegranate-ice": "https://puffvapestore.com/wp-content/uploads/2025/03/pvajf16000-7.jpg",
+  "16k-blueberry-red-raspberry": "https://puffvapestore.com/wp-content/uploads/2025/03/pvajf16000-31.jpg",
+  "16k-cherry-lemon": "https://puffvapestore.com/wp-content/uploads/2025/03/pvajf16000-2.jpg",
+  "16k-grapefruit-lemonade-ice": "https://puffvapestore.com/wp-content/uploads/2025/03/pvajf16000-2.jpg",
+  "16k-green-apple-peach-pear": "https://puffvapestore.com/wp-content/uploads/2025/03/pvajf16000-2.jpg",
+  "16k-mango-passion-fruit": "https://puffvapestore.com/wp-content/uploads/2025/03/pvajf16000-36.jpg",
+  "16k-passion-fruit-kiwi": "https://puffvapestore.com/wp-content/uploads/2025/03/pvajf16000-29.jpg",
+  "16k-peach-oolong-tea": "https://puffvapestore.com/wp-content/uploads/2025/03/pvajf16000-2.jpg",
+  "16k-pineapple-mango-orange": "https://puffvapestore.com/wp-content/uploads/2025/03/pvajf16000-2.jpg",
+  "16k-sakura-grape": "https://puffvapestore.com/wp-content/uploads/2025/03/pvajf16000-30.jpg",
+  "16k-strawberry-kiwi": "https://puffvapestore.com/wp-content/uploads/2025/03/pvajf16000-22.jpg",
+  "16k-strawberry-watermelon-ice": "https://puffvapestore.com/wp-content/uploads/2025/03/pvajf16000-19.jpg",
+  "16k-watermelon-mango-peach": "https://puffvapestore.com/wp-content/uploads/2025/03/pvajf16000-2.jpg",
+  "16k-watermelon-ice": "https://puffvapestore.com/wp-content/uploads/2025/03/pvajf16000-26.jpg",
+  "16k-berry-burst": "https://puffvapestore.com/wp-content/uploads/2025/03/pvajf16000-23.jpg",
+  "16k-white-peach-razz": "https://puffvapestore.com/wp-content/uploads/2025/04/pvajf18000-24.jpg",
+  "16k-hubba-bubba-strawberry": "https://puffvapestore.com/wp-content/uploads/2025/03/pvajf16000-25.jpg",
+  "16k-strawberry-pina-colada": "https://puffvapestore.com/wp-content/uploads/2025/03/pvajf16000-2.jpg",
+  "16k-blueberry-raspberry-cherry": "https://puffvapestore.com/wp-content/uploads/2025/03/pvajf16000-33.jpg",
+  "16k-cherry-berry": "https://puffvapestore.com/wp-content/uploads/2025/03/pvajf16000-15.jpg",
+  "16k-strawberry-ice": "https://puffvapestore.com/wp-content/uploads/2025/03/pvajf16000-14.jpg",
+  "16k-mixed-berries": "https://puffvapestore.com/wp-content/uploads/2025/03/pvajf16000-17.jpg",
+  "16k-watermelon-bubblegum": "https://puffvapestore.com/wp-content/uploads/2025/03/pvajf16000-4.jpg",
+  "16k-strawberry-banana": "https://puffvapestore.com/wp-content/uploads/2025/03/pvajf16000-11.jpg",
+  "16k-cola-ice": "https://puffvapestore.com/wp-content/uploads/2025/03/pvajf16000-18.jpg",
+  "16k-blueberry-kiwi": "https://puffvapestore.com/wp-content/uploads/2025/03/pvajf16000-21.jpg",
+  "16k-blue-razz-cherry": "https://puffvapestore.com/wp-content/uploads/2025/03/pvajf16000-9.jpg",
+  "16k-cherry-watermelon-freeze": "https://puffvapestore.com/wp-content/uploads/2025/03/pvajf16000-26.jpg",
+  "16k-fizzy-cherry-cola": "https://puffvapestore.com/wp-content/uploads/2025/03/pvajf16000-28.jpg",
+  "16k-juicy-peaches": "https://puffvapestore.com/wp-content/uploads/2025/03/pvajf16000-2.jpg",
+  "16k-peach-berry": "https://puffvapestore.com/wp-content/uploads/2025/03/pvajf16000-3.jpg",
+  "16k-kiwi-passion-fruit-guava": "https://puffvapestore.com/wp-content/uploads/2025/03/pvajf16000-29.jpg",
+  "16k-tiger-blood": "https://puffvapestore.com/wp-content/uploads/2025/03/pvajf16000-2.jpg",
+  "16k-summer-peach-ice": "https://puffvapestore.com/wp-content/uploads/2025/03/pvajf16000-2.jpg",
+  "16k-black-ice": "https://puffvapestore.com/wp-content/uploads/2025/03/pvajf16000-2.jpg",
+  "16k-black-dragon-ice": "https://puffvapestore.com/wp-content/uploads/2025/03/pvajf16000-2.jpg",
+  "16k-cherry": "https://puffvapestore.com/wp-content/uploads/2025/04/pvajf18000-12.jpg",
+  "16k-love-66": "https://puffvapestore.com/wp-content/uploads/2025/03/pvajf16000-2.jpg",
+  "16k-hawaii": "https://puffvapestore.com/wp-content/uploads/2025/03/pvajf16000-2.jpg",
+  "16k-mi-amor": "https://puffvapestore.com/wp-content/uploads/2025/03/pvajf16000-2.jpg",
+  "16k-strawberry-red-bull": "https://puffvapestore.com/wp-content/uploads/2025/03/pvajf16000-2.jpg",
+  "16k-dragon-fruit": "https://puffvapestore.com/wp-content/uploads/2025/03/pvajf16000-2.jpg",
+  "16k-raspberry-rhubarb": "https://puffvapestore.com/wp-content/uploads/2025/03/pvajf16000-2.jpg",
+  "16k-strawberry-apple-pear": "https://puffvapestore.com/wp-content/uploads/2025/03/pvajf16000-2.jpg",
+  "16k-sour-cherry-gummy": "https://puffvapestore.com/wp-content/uploads/2025/03/pvajf16000-2.jpg",
+  "16k-cherry-strawberry-raspberry": "https://puffvapestore.com/wp-content/uploads/2025/03/pvajf16000-2.jpg",
+  "16k-fresh-strawberry": "https://puffvapestore.com/wp-content/uploads/2025/03/pvajf16000-2.jpg",
+  "16k-jnr-frosted-mint-burst": "https://puffvapestore.com/wp-content/uploads/2025/03/pvajf16000-2.jpg",
+  "16k-jnr-zesty-marmalade-crunch": "https://puffvapestore.com/wp-content/uploads/2025/03/pvajf16000-2.jpg",
+  "16k-jnr-red-punch": "https://puffvapestore.com/wp-content/uploads/2025/03/pvajf16000-2.jpg",
+  "16k-jnr-fabublue": "https://puffvapestore.com/wp-content/uploads/2025/03/pvajf16000-2.jpg",
+  "16k-jnr-vc-boost": "https://puffvapestore.com/wp-content/uploads/2025/03/pvajf16000-2.jpg",
+  "16k-jnr-sparkling-cherry": "https://puffvapestore.com/wp-content/uploads/2025/03/pvajf16000-2.jpg",
+  "16k-jnr-woodland-bounty": "https://puffvapestore.com/wp-content/uploads/2025/03/pvajf16000-2.jpg",
+  "16k-jnr-fizzy-strawberry-strips": "https://puffvapestore.com/wp-content/uploads/2025/03/pvajf16000-2.jpg",
+  "16k-jnr-berry-passion-tangy-fizz": "https://puffvapestore.com/wp-content/uploads/2025/03/pvajf16000-2.jpg",
+  "16k-jnr-tropicana-zest": "https://puffvapestore.com/wp-content/uploads/2025/03/pvajf16000-2.jpg",
+  "18k-blue-razz-ice": "https://puffvapestore.com/wp-content/uploads/2025/04/pvajf18000-1.jpg",
+  "18k-blueberry-raspberry": "https://puffvapestore.com/wp-content/uploads/2025/04/pvajf18000-1.jpg",
+  "18k-cool-mint": "https://puffvapestore.com/wp-content/uploads/2025/04/pvajf18000-1.jpg",
+  "18k-kiwi-watermelon-ice": "https://puffvapestore.com/wp-content/uploads/2025/04/pvajf18000-1.jpg",
+  "18k-grape-ice": "https://puffvapestore.com/wp-content/uploads/2025/04/pvajf18000-1.jpg",
+  "18k-strawberry-kiwi": "https://puffvapestore.com/wp-content/uploads/2025/04/pvajf18000-1.jpg",
+  "18k-strawberry-watermelon-ice": "https://puffvapestore.com/wp-content/uploads/2025/04/pvajf18000-27.jpg",
+  "18k-watermelon-ice": "https://puffvapestore.com/wp-content/uploads/2025/04/pvajf18000-1.jpg",
+  "18k-strawberry-ice": "https://puffvapestore.com/wp-content/uploads/2025/04/pvajf18000-1.jpg",
+  "18k-mixed-berries": "https://puffvapestore.com/wp-content/uploads/2025/04/pvajf18000-1.jpg",
+  "18k-watermelon-bubblegum": "https://puffvapestore.com/wp-content/uploads/2025/04/pvajf18000-1.jpg",
+  "18k-sour-apple-ice": "https://puffvapestore.com/wp-content/uploads/2025/04/pvajf18000-1.jpg",
+  "18k-peach-ice": "https://puffvapestore.com/wp-content/uploads/2025/04/pvajf18000-1.jpg",
+  "18k-berry-burst": "https://puffvapestore.com/wp-content/uploads/2025/04/pvajf18000-1.jpg",
+  "18k-blueberry-raspberry-cherry": "https://puffvapestore.com/wp-content/uploads/2025/04/pvajf18000-1.jpg",
+  "18k-cherry-berry": "https://puffvapestore.com/wp-content/uploads/2025/04/pvajf18000-1.jpg",
+  "18k-strawberry-banana": "https://puffvapestore.com/wp-content/uploads/2025/04/pvajf18000-1.jpg",
+  "18k-blueberry-kiwi": "https://puffvapestore.com/wp-content/uploads/2025/04/pvajf18000-1.jpg",
+  "18k-passion-fruit-kiwi": "https://puffvapestore.com/wp-content/uploads/2025/04/pvajf18000-5.jpg",
+  "18k-white-peach-razz": "https://puffvapestore.com/wp-content/uploads/2025/04/pvajf18000-24.jpg",
+  "18k-blue-razz-cherry": "https://puffvapestore.com/wp-content/uploads/2025/04/pvajf18000-1.jpg",
+  "18k-cherry-watermelon-freeze": "https://puffvapestore.com/wp-content/uploads/2025/04/pvajf18000-12.jpg",
+  "18k-cherry-cola": "https://puffvapestore.com/wp-content/uploads/2025/04/pvajf18000-1.jpg",
+  "18k-banana-ice": "https://puffvapestore.com/wp-content/uploads/2025/04/pvajf18000-1.jpg",
+  "18k-skittles": "https://puffvapestore.com/wp-content/uploads/2025/04/pvajf18000-1.jpg",
+  "18k-triple-melon": "https://puffvapestore.com/wp-content/uploads/2025/04/pvajf18000-1.jpg",
+  "18k-mr-blue": "https://puffvapestore.com/wp-content/uploads/2025/04/pvajf18000-17.jpg",
+  "18k-cherry-ice": "https://puffvapestore.com/wp-content/uploads/2025/04/pvajf18000-17.jpg",
+  "18k-watermelon-lychee": "https://puffvapestore.com/wp-content/uploads/2025/04/pvajf18000-1.jpg"
+};
+const FALLBACK_16K = 'https://puffvapestore.com/wp-content/uploads/2025/03/pvajf16000-2.jpg';
+const FALLBACK_18K = 'https://puffvapestore.com/wp-content/uploads/2025/04/pvajf18000-1.jpg';
+
+/* Catalogue complet Puff JNR */
+
+const FLAVORS_16K = [
+  'Blackberry Red Raspberry', 'Blue Razz Ice', 'Blueberry Pomegranate Ice', 'Blueberry Red Raspberry',
+  'Cherry Lemon', 'Grapefruit Lemonade Ice', 'Green Apple Peach Pear', 'Mango Passion Fruit',
+  'Passion Fruit Kiwi', 'Peach Oolong Tea', 'Pineapple Mango Orange', 'Sakura Grape',
+  'Strawberry Kiwi', 'Strawberry Watermelon Ice', 'Watermelon Mango Peach', 'Watermelon Ice',
+  'Berry Burst', 'White Peach Razz', 'Hubba Bubba Strawberry', 'Strawberry Pina Colada',
+  'Blueberry Raspberry Cherry', 'Cherry Berry', 'Strawberry Ice', 'Mixed Berries',
+  'Watermelon Bubblegum', 'Strawberry Banana', 'Cola Ice', 'Blueberry Kiwi',
+  'Blue Razz Cherry', 'Cherry Watermelon Freeze', 'Fizzy Cherry Cola', 'Juicy Peaches',
+  'Peach Berry', 'Kiwi Passion Fruit Guava', 'Tiger Blood', 'Summer Peach Ice',
+  'Black Ice', 'Black Dragon Ice', 'Cherry', 'Love 66', 'Hawaii', 'Mi Amor',
+  'Strawberry Red Bull', 'Dragon Fruit', 'Raspberry Rhubarb', 'Strawberry Apple Pear',
+  'Sour Cherry Gummy', 'Cherry Strawberry Raspberry', 'Fresh Strawberry',
+  'JNR Frosted Mint Burst', 'JNR Zesty Marmalade Crunch', 'JNR Red Punch', 'JNR Fabublue',
+  'JNR VC Boost', 'JNR Sparkling Cherry', 'JNR Woodland Bounty', 'JNR Fizzy Strawberry Strips',
+  'JNR Berry-Passion Tangy Fizz', 'JNR Tropicana Zest',
+  'Lemon & Lime', 'Gummy Bear', 'Triple Mango', 'Cool Mint', 'Grape Ice', 'Banana Ice',
+  'Triple Melon', 'Skittles', 'Lemon Lime Mint', 'Pink Lemonade'
+];
+
+const FLAVORS_18K = [
+  'Blue Razz Ice', 'Blueberry Raspberry', 'Cool Mint', 'Kiwi Watermelon Ice', 'Grape Ice',
+  'Strawberry Kiwi', 'Strawberry Watermelon Ice', 'Watermelon Ice', 'Strawberry Ice',
+  'Mixed Berries', 'Watermelon Bubblegum', 'Sour Apple Ice', 'Peach Ice', 'Berry Burst',
+  'Blueberry Raspberry Cherry', 'Cherry Berry', 'Strawberry Banana', 'Blueberry Kiwi',
+  'Passion Fruit Kiwi', 'White Peach Razz', 'Blue Razz Cherry', 'Cherry Watermelon Freeze',
+  'Cherry Cola', 'Banana Ice', 'Skittles', 'Triple Melon', 'Mr. Blue', 'Cherry Ice',
+  'Watermelon Lychee', 'Lemon & Lime', 'Gummy Bear', 'Summer Peach Ice', 'Peach Mango',
+  'Pineapple Ice', 'Peach Berry', 'Black Ice', 'Lady Killa'
+];
+
+const COLOR_RULES = [
+  { keys: ['strawberry', 'cherry', 'red bull', 'red punch', 'raspberry rhubarb'], bg: '#6B0F2A', accent: '#FF4D6D' },
+  { keys: ['blue razz', 'blueberry', 'mr. blue', 'fabublue', 'black ice', 'black dragon'], bg: '#0F1B4C', accent: '#4CC9F0' },
+  { keys: ['watermelon'], bg: '#1A4D2E', accent: '#FF6B6B' },
+  { keys: ['mango', 'peach', 'pineapple', 'passion', 'tropicana', 'hawaii', 'tropical'], bg: '#7C3A00', accent: '#FFB347' },
+  { keys: ['grape', 'sakura'], bg: '#4A148C', accent: '#CE93D8' },
+  { keys: ['kiwi', 'green apple', 'woodland'], bg: '#1B4332', accent: '#95D5B2' },
+  { keys: ['mint', 'cool', 'ice', 'frosted'], bg: '#0D3B4F', accent: '#80FFDB' },
+  { keys: ['cola', 'fizzy', 'sparkling'], bg: '#2C1810', accent: '#D4A574' },
+  { keys: ['banana', 'hubba', 'bubblegum', 'skittles', 'gummy', 'zesty'], bg: '#5C4A00', accent: '#FFE066' },
+  { keys: ['dragon', 'tiger', 'love 66', 'mi amor', 'lady'], bg: '#4A0E4E', accent: '#F72585' },
+  { keys: ['oolong', 'tea'], bg: '#3D2C1E', accent: '#C9A66B' },
+  { keys: ['melon', 'lychee'], bg: '#1E5631', accent: '#98FB98' },
+  { keys: ['lemon', 'lime', 'grapefruit', 'marmalade'], bg: '#4A4A00', accent: '#FFEB3B' },
+  { keys: ['apple', 'pear'], bg: '#2D5016', accent: '#A8E06F' },
+  { keys: ['berry', 'berries', 'mixed'], bg: '#3B0A45', accent: '#E040FB' },
+  { keys: ['vc boost'], bg: '#1A1A2E', accent: '#E94560' }
+];
+
+const DESCRIPTIONS = {
+  fruit: 'Mélange fruité équilibré, vapeur dense et fraîcheur maîtrisée.',
+  ice: 'Fraîcheur glacée intense avec une touche sucrée en fin de bouche.',
+  cola: 'Effervescence cola authentique, légèrement pétillante et rafraîchissante.',
+  mint: 'Menthe cristalline, sensation pure et longue en gorge.',
+  exotic: 'Saveur tropicale audacieuse, profil complexe et enveloppant.',
+  candy: 'Profil bonbon gourmand, sucré sans lourdeur.',
+  default: 'Saveur signature JNR, rendu aromatique constant du premier au dernier puff.'
+};
+
+function getFlavorColors(name) {
+  const lower = name.toLowerCase();
+  for (const rule of COLOR_RULES) {
+    if (rule.keys.some(k => lower.includes(k))) {
+      return { bg: rule.bg, accent: rule.accent };
+    }
+  }
+  let hash = 0;
+  for (let i = 0; i < name.length; i++) hash = name.charCodeAt(i) + ((hash << 5) - hash);
+  const hue = Math.abs(hash) % 360;
+  return { bg: `hsl(${hue}, 45%, 18%)`, accent: `hsl(${hue}, 80%, 65%)` };
+}
+
+function getCategory(name) {
+  const lower = name.toLowerCase();
+  if (/ice|mint|cool|frosted|freeze/.test(lower)) return 'ice';
+  if (/cola|fizzy|sparkling/.test(lower)) return 'cola';
+  if (/mint|cool/.test(lower)) return 'mint';
+  if (/hubba|skittles|gummy|bubblegum|zesty/.test(lower)) return 'candy';
+  if (/hawaii|tropic|passion|dragon|tiger|mi amor|love/.test(lower)) return 'exotic';
+  return 'fruit';
+}
+
+function getDescription(name) {
+  const cat = getCategory(name);
+  return DESCRIPTIONS[cat] || DESCRIPTIONS.default;
+}
+
+function slugify(name, model) {
+  return `${model}-${name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}`;
+}
+
+function imageSlug(name) {
+  return name.toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/ñ/g, 'n')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '');
+}
+
+function getImageUrl(name, model) {
+  const key = `${model.toLowerCase()}-${imageSlug(name)}`;
+  if (typeof IMAGE_MAP !== 'undefined' && IMAGE_MAP[key]) return IMAGE_MAP[key];
+  return model === '16K' ? FALLBACK_16K : FALLBACK_18K;
+}
+
+/* ─────────────────────────────────────────────
+   Modèle 3D procédural de la Puff JNR
+   Rendu SVG ombré, coloré selon le goût.
+   (utilisé pour les cartes & la modale)
+   ───────────────────────────────────────────── */
+/* Teinte (hue) d'une couleur CSS quelconque (hex ou hsl) */
+const _colorCtx = (() => { try { return document.createElement('canvas').getContext('2d'); } catch (e) { return null; } })();
+function colorToHue(color) {
+  if (!_colorCtx) return 270;
+  _colorCtx.fillStyle = '#888888';
+  _colorCtx.fillStyle = color;
+  const s = _colorCtx.fillStyle;
+  let r, g, b;
+  if (s[0] === '#') { r = parseInt(s.slice(1, 3), 16); g = parseInt(s.slice(3, 5), 16); b = parseInt(s.slice(5, 7), 16); }
+  else { const m = (s.match(/[\d.]+/g) || [136, 136, 136]).map(Number); r = m[0]; g = m[1]; b = m[2]; }
+  r /= 255; g /= 255; b /= 255;
+  const max = Math.max(r, g, b), min = Math.min(r, g, b), d = max - min;
+  let h = 0;
+  if (d !== 0) {
+    switch (max) {
+      case r: h = ((g - b) / d) % 6; break;
+      case g: h = (b - r) / d + 2; break;
+      default: h = (r - g) / d + 4;
+    }
+    h *= 60; if (h < 0) h += 360;
+  }
+  return Math.round(h);
+}
+
+/* ─────────────────────────────────────────────
+   Recréation fidèle de la vraie Puff JNR Falcon
+   Corps transparent, aigle JNR « JUST NO REASON »,
+   écran digital batterie + jauge arc-en-ciel.
+   Palette recolorée selon le goût.
+   ───────────────────────────────────────────── */
+function deviceSVG(item, opts = {}) {
+  const w = opts.w || 100;
+  const h = opts.h || 167;
+  const uid = 'dv' + String(item.id).replace(/[^a-z0-9]/gi, '');
+  const isX = item.model === '18K';
+  const puffs = isX ? '18000' : '16000';
+  const flav = String(item.name).toUpperCase();
+
+  const H = (typeof item.hue === 'number') ? item.hue : colorToHue(item.accent);
+  const p1 = `hsl(${H},92%,60%)`;
+  const p2 = `hsl(${(H + 40) % 360},95%,57%)`;
+  const p3 = `hsl(${(H + 320) % 360},88%,55%)`;
+  const p4 = `hsl(${(H + 170) % 360},90%,60%)`;
+
+  // ── Version légère (cartes du catalogue, 100+ instances) ──
+  if (opts.simple) {
+    return `<svg class="dev-svg" viewBox="0 0 240 400" width="${w}" height="${h}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Puff JNR ${item.model} ${item.name}">
+      <defs>
+        <linearGradient id="${uid}-bg" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="${p3}"/><stop offset="0.4" stop-color="${p1}"/>
+          <stop offset="0.72" stop-color="${p4}"/><stop offset="1" stop-color="#0a0a12"/>
+        </linearGradient>
+        <linearGradient id="${uid}-rain" x1="0" y1="1" x2="0" y2="0">
+          <stop offset="0" stop-color="#ff3b3b"/><stop offset="0.35" stop-color="#ffe14d"/>
+          <stop offset="0.7" stop-color="#37b6ff"/><stop offset="1" stop-color="#a05cff"/>
+        </linearGradient>
+      </defs>
+      <ellipse cx="120" cy="372" rx="56" ry="9" fill="rgba(0,0,0,0.4)"/>
+      <rect x="102" y="26" width="36" height="22" rx="8" fill="#1a1b22"/>
+      <rect x="44" y="40" width="152" height="324" rx="34" fill="#14151c" stroke="rgba(255,255,255,0.2)"/>
+      <rect x="56" y="64" width="128" height="292" rx="22" fill="url(#${uid}-bg)"/>
+      <g fill="#f6f6ff">
+        <path d="M120 102 L86 120 L116 132 Z"/><path d="M115 134 L88 150 L114 156 Z"/><path d="M114 158 L80 178 L118 188 Z"/>
+        <path d="M120 102 L154 120 L124 132 Z"/><path d="M125 134 L152 150 L126 156 Z"/><path d="M126 158 L160 178 L122 188 Z"/>
+      </g>
+      <path d="M110 150 L130 150 L124 186 Q120 194 116 186 Z" fill="#ffb347"/>
+      <circle cx="103" cy="150" r="2.6" fill="#15101a"/><circle cx="137" cy="150" r="2.6" fill="#15101a"/>
+      <text x="120" y="236" text-anchor="middle" font-family="Syne,sans-serif" font-size="26" font-weight="800" fill="#fff">JNR</text>
+      <text x="120" y="250" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="6.5" fill="rgba(255,255,255,0.8)" letter-spacing="2">JUST NO REASON</text>
+      <text x="120" y="272" text-anchor="middle" font-family="Syne,sans-serif" font-size="10.5" font-weight="700" fill="#fff" textLength="116" lengthAdjust="spacingAndGlyphs">${flav}</text>
+      <rect x="64" y="288" width="112" height="52" rx="10" fill="#05060a" stroke="rgba(255,255,255,0.16)"/>
+      <text x="74" y="322" font-family="Syne,sans-serif" font-size="20" font-weight="800" fill="#dfe8ff">100%</text>
+      <rect x="150" y="300" width="18" height="28" rx="3" fill="url(#${uid}-rain)"/>
+    </svg>`;
+  }
+
+  // Demi-aigle gauche (miroir pour la droite)
+  const eagleHalf = `
+      <path d="M120 96 L104 100 L118 119 Z" fill="${p2}"/>
+      <path d="M118 112 L91 107 L116 129 Z" fill="${p1}"/>
+      <path d="M116 124 L77 125 L114 141 Z" fill="url(#${uid}-eagle)"/>
+      <path d="M114 138 L82 146 L116 153 Z" fill="#15121f"/>
+      <path d="M113 147 L90 151 L99 161 L115 157 Z" fill="${p2}"/>
+      <circle cx="104" cy="153" r="3.4" fill="#0a0a12"/>
+      <circle cx="105.4" cy="151.6" r="1.1" fill="#fff"/>
+      <path d="M115 157 L72 167 L92 183 L117 175 Z" fill="url(#${uid}-eagle)"/>
+      <path d="M117 177 L80 193 L111 205 L119 199 Z" fill="${p4}"/>`;
+
+  return `<svg class="dev-svg" viewBox="0 0 240 400" width="${w}" height="${h}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Puff JNR ${item.model} ${item.name}">
+    <defs>
+      <clipPath id="${uid}-clip"><rect x="56" y="64" width="128" height="292" rx="22"/></clipPath>
+      <linearGradient id="${uid}-glass" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#262732"/>
+        <stop offset="0.5" stop-color="#14151c"/>
+        <stop offset="1" stop-color="#0a0a10"/>
+      </linearGradient>
+      <linearGradient id="${uid}-eagle" x1="0" y1="0" x2="0.25" y2="1">
+        <stop offset="0" stop-color="#ffffff"/>
+        <stop offset="0.42" stop-color="${p1}"/>
+        <stop offset="0.78" stop-color="${p4}"/>
+        <stop offset="1" stop-color="#0c0c16"/>
+      </linearGradient>
+      <linearGradient id="${uid}-beak" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#ffe08a"/>
+        <stop offset="0.5" stop-color="#ffa53d"/>
+        <stop offset="1" stop-color="#d2691e"/>
+      </linearGradient>
+      <linearGradient id="${uid}-rain" x1="0" y1="1" x2="0" y2="0">
+        <stop offset="0" stop-color="#ff3b3b"/>
+        <stop offset="0.2" stop-color="#ff9d2f"/>
+        <stop offset="0.4" stop-color="#ffe14d"/>
+        <stop offset="0.6" stop-color="#46e07a"/>
+        <stop offset="0.8" stop-color="#37b6ff"/>
+        <stop offset="1" stop-color="#a05cff"/>
+      </linearGradient>
+      <radialGradient id="${uid}-g1"><stop offset="0" stop-color="${p1}"/><stop offset="1" stop-color="${p1}" stop-opacity="0"/></radialGradient>
+      <radialGradient id="${uid}-g2"><stop offset="0" stop-color="${p2}"/><stop offset="1" stop-color="${p2}" stop-opacity="0"/></radialGradient>
+      <radialGradient id="${uid}-g3"><stop offset="0" stop-color="${p3}"/><stop offset="1" stop-color="${p3}" stop-opacity="0"/></radialGradient>
+      <radialGradient id="${uid}-g4"><stop offset="0" stop-color="${p4}"/><stop offset="1" stop-color="${p4}" stop-opacity="0"/></radialGradient>
+      <radialGradient id="${uid}-vig" cx="50%" cy="42%" r="65%">
+        <stop offset="0" stop-color="#000" stop-opacity="0"/>
+        <stop offset="0.74" stop-color="#000" stop-opacity="0"/>
+        <stop offset="1" stop-color="#000" stop-opacity="0.6"/>
+      </radialGradient>
+    </defs>
+
+    <ellipse cx="120" cy="372" rx="58" ry="9" fill="rgba(0,0,0,0.4)"/>
+
+    <!-- embout -->
+    <rect x="102" y="26" width="36" height="22" rx="8" fill="#1a1b22"/>
+    <!-- corps verre -->
+    <rect x="44" y="40" width="152" height="324" rx="34" fill="url(#${uid}-glass)" stroke="rgba(255,255,255,0.22)" stroke-width="1.2"/>
+    <!-- panneau artwork -->
+    <g clip-path="url(#${uid}-clip)">
+      <rect x="56" y="64" width="128" height="292" fill="#0b0a12"/>
+      <circle cx="92" cy="120" r="96" fill="url(#${uid}-g1)"/>
+      <circle cx="162" cy="172" r="86" fill="url(#${uid}-g2)"/>
+      <circle cx="108" cy="250" r="100" fill="url(#${uid}-g3)"/>
+      <circle cx="160" cy="92" r="72" fill="url(#${uid}-g4)"/>
+      <circle cx="76" cy="210" r="3" fill="#fff" opacity="0.7"/>
+      <circle cx="170" cy="120" r="2.4" fill="#fff" opacity="0.6"/>
+      <circle cx="150" cy="230" r="2" fill="${p2}"/>
+      <circle cx="88" cy="170" r="2.2" fill="${p4}"/>
+      <circle cx="120" cy="78" r="2" fill="#fff" opacity="0.5"/>
+      <!-- backing aigle -->
+      <ellipse cx="120" cy="150" rx="56" ry="64" fill="#000" opacity="0.28"/>
+      <!-- aigle -->
+      <g>${eagleHalf}</g>
+      <g transform="translate(240 0) scale(-1 1)">${eagleHalf}</g>
+      <!-- bec -->
+      <path d="M107 150 L133 150 L129 173 C127 185 123 197 120 198 C117 197 113 185 111 173 Z" fill="url(#${uid}-beak)"/>
+      <path d="M111 173 L129 173 L126 189 L114 189 Z" fill="rgba(0,0,0,0.22)"/>
+      <ellipse cx="120" cy="160" rx="5" ry="1.3" fill="#000" opacity="0.4"/>
+      <rect x="56" y="64" width="128" height="292" fill="url(#${uid}-vig)"/>
+    </g>
+
+    <!-- branding -->
+    <text x="120" y="234" text-anchor="middle" font-family="Syne,sans-serif" font-size="27" font-weight="800" fill="#fff" letter-spacing="0.5">JNR<tspan font-size="10" dy="-9">®</tspan></text>
+    <text x="120" y="248" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="7" fill="rgba(255,255,255,0.85)" letter-spacing="2.5">JUST NO REASON</text>
+    <text x="120" y="270" text-anchor="middle" font-family="Syne,sans-serif" font-size="11" font-weight="700" fill="#fff" letter-spacing="1" textLength="118" lengthAdjust="spacingAndGlyphs">${flav}</text>
+
+    <!-- écran digital -->
+    <rect x="64" y="286" width="112" height="54" rx="10" fill="#05060a" stroke="rgba(255,255,255,0.18)"/>
+    <text x="72" y="322" font-family="Syne,sans-serif" font-size="21" font-weight="800" fill="#dfe8ff" letter-spacing="0.5">100%</text>
+    <rect x="131" y="300" width="20" height="28" rx="3" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/>
+    <rect x="137.5" y="297.5" width="7" height="3" rx="1" fill="rgba(255,255,255,0.5)"/>
+    <rect x="133.5" y="302.5" width="15" height="23" rx="1.5" fill="url(#${uid}-rain)"/>
+    <rect x="158" y="300" width="10" height="30" rx="3" fill="url(#${uid}-rain)"/>
+    <text x="120" y="350" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="6" fill="rgba(255,255,255,0.45)" letter-spacing="2">${puffs} PUFFS</text>
+
+    <!-- reflets verre -->
+    <rect x="50" y="56" width="8" height="290" rx="4" fill="rgba(255,255,255,0.10)"/>
+    <rect x="53" y="60" width="2.5" height="120" rx="1.2" fill="rgba(255,255,255,0.25)"/>
+  </svg>`;
+}
+
+function buildCatalog() {
+  const catalog = [];
+
+  FLAVORS_16K.forEach(name => {
+    const colors = getFlavorColors(name);
+    catalog.push({
+      id: slugify(name, '16k'),
+      name,
+      model: '16K',
+      modelLabel: 'Falcon 16K',
+      price: 10,
+      puffs: 16000,
+      battery: '850 mAh',
+      liquid: '22 ml',
+      ...colors,
+      category: getCategory(name),
+      description: getDescription(name),
+      image: getImageUrl(name, '16K'),
+      tags: name.toLowerCase().split(/[\s-]+/).filter(Boolean)
+    });
+  });
+
+  FLAVORS_18K.forEach(name => {
+    const colors = getFlavorColors(name);
+    catalog.push({
+      id: slugify(name, '18k'),
+      name,
+      model: '18K',
+      modelLabel: 'Falcon X 18K',
+      price: 12,
+      puffs: 18000,
+      battery: '950 mAh',
+      liquid: '24 ml',
+      ...colors,
+      category: getCategory(name),
+      description: getDescription(name),
+      image: getImageUrl(name, '18K'),
+      tags: name.toLowerCase().split(/[\s-]+/).filter(Boolean)
+    });
+  });
+
+  return catalog;
+}
+
+const PUFF_CATALOG = buildCatalog();
+
+/* ═══════════════════════════════════════════
+   JNR Taste Atlas - Application Logic
+   ═══════════════════════════════════════════ */
+
+(function () {
+  'use strict';
+
+  const STORAGE_KEY = 'jnr-atlas-data';
+  const catalog = PUFF_CATALOG;
+
+  let state = loadState();
+  let currentIndex = 0;
+  let autoplayTimer = null;
+  let isSliding = false;
+  let activeFilter = 'all';
+  let searchQuery = '';
+
+  // ── State persistence ──
+  function loadState() {
+    try {
+      const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
+      return { ratings: saved?.ratings || {}, favorites: saved?.favorites || [] };
+    } catch {
+      return { ratings: {}, favorites: [] };
+    }
+  }
+
+  function saveState() {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    updateStats();
+    updateFavCount();
+  }
+
+  function getRating(id) {
+    return state.ratings[id] || 0;
+  }
+
+  function setRating(id, value) {
+    state.ratings[id] = value;
+    saveState();
+  }
+
+  function isFavorite(id) {
+    return state.favorites.includes(id);
+  }
+
+  function toggleFavorite(id) {
+    const idx = state.favorites.indexOf(id);
+    if (idx >= 0) state.favorites.splice(idx, 1);
+    else state.favorites.push(id);
+    saveState();
+  }
+
+  // ── DOM refs ──
+  const bgLayer = document.getElementById('bgLayer');
+  const bgGlow = document.getElementById('bgGlow');
+  const titleTrack = document.getElementById('titleTrack');
+  const visualPrev = document.getElementById('visualPrev');
+  const visualMain = document.getElementById('visualMain');
+  const hero = document.querySelector('.hero');
+  const heroModel = document.getElementById('heroModel');
+  const heroDesc = document.getElementById('heroDesc');
+  const heroPrice = document.getElementById('heroPrice');
+  const heroPuffs = document.getElementById('heroPuffs');
+  const heroStars = document.getElementById('heroStars');
+  const heroRatingAvg = document.getElementById('heroRatingAvg');
+  const slideCounter = document.getElementById('slideCounter');
+  const heartBtn = document.getElementById('heartBtn');
+  const scene3d = document.getElementById('scene3d');
+  const tilt3d = document.getElementById('tilt3d');
+  const heroDevice = document.getElementById('heroDevice');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const heroSearch = document.getElementById('heroSearch');
+  const catalogSearch = document.getElementById('catalogSearch');
+  const flavorGrid = document.getElementById('flavorGrid');
+  const noResults = document.getElementById('noResults');
+  const sortSelect = document.getElementById('sortSelect');
+  const detailModal = document.getElementById('detailModal');
+  const modalContent = document.getElementById('modalContent');
+  const favModal = document.getElementById('favModal');
+  const favList = document.getElementById('favList');
+
+  // ── Init title track ──
+  function initTitleTrack() {
+    titleTrack.innerHTML = '';
+    catalog.forEach((item, i) => {
+      const el = document.createElement('div');
+      el.className = 'title-slide' + (i === 0 ? ' active' : i === 1 ? ' next' : '');
+      el.textContent = item.name;
+      el.dataset.index = i;
+      titleTrack.appendChild(el);
+    });
+  }
+
+  // ── Stars renderer ──
+  function renderStars(container, id, interactive = true) {
+    container.innerHTML = '';
+    const current = getRating(id);
+    for (let i = 1; i <= 5; i++) {
+      const btn = document.createElement('button');
+      btn.className = 'star-btn' + (i <= current ? ' active' : '');
+      btn.textContent = '★';
+      btn.setAttribute('aria-label', `${i} étoile${i > 1 ? 's' : ''}`);
+      if (interactive) {
+        btn.addEventListener('click', e => {
+          e.stopPropagation();
+          setRating(id, i);
+          renderStars(container, id, interactive);
+          renderGrid();
+          updateHeroRating();
+        });
+      }
+      container.appendChild(btn);
+    }
+  }
+
+  function updateHeroRating() {
+    const item = catalog[currentIndex];
+    renderStars(heroStars, item.id);
+    const r = getRating(item.id);
+    heroRatingAvg.textContent = r ? `${r}/5` : 'Pas encore noté';
+  }
+
+  function setHeroDevice(item) {
+    if (!heroDevice) return;
+    heroDevice.innerHTML = deviceSVG(item, { w: '100%', h: '100%' });
+  }
+
+  // ── Apply flavor theme ──
+  function applyTheme(item) {
+    document.documentElement.style.setProperty('--hero-bg', item.bg);
+    document.documentElement.style.setProperty('--hero-accent', item.accent);
+    document.documentElement.style.setProperty('--puff-bg', item.bg);
+    document.documentElement.style.setProperty('--puff-accent', item.accent);
+    document.documentElement.style.setProperty('--dev-accent', item.accent);
+    document.documentElement.style.setProperty('--dev-bg', item.bg);
+    bgLayer.style.background = item.bg;
+    bgGlow.style.background = `radial-gradient(ellipse 70% 60% at 50% 40%, ${item.accent} 0%, transparent 65%)`;
+    visualPrev.style.setProperty('--hero-accent', item.accent);
+  }
+
+  // ── Update hero slide ──
+  function goToSlide(index, direction = 1) {
+    if (isSliding) return;
+    const prev = currentIndex;
+    currentIndex = ((index % catalog.length) + catalog.length) % catalog.length;
+    if (prev === currentIndex) return;
+
+    isSliding = true;
+    hero.classList.add('sliding');
+
+    const item = catalog[currentIndex];
+    const prevItem = catalog[prev];
+
+    // Update title slides
+    titleTrack.querySelectorAll('.title-slide').forEach((el, i) => {
+      el.className = 'title-slide';
+      if (i === currentIndex) el.classList.add('active');
+      else if (i === prev) el.classList.add(direction > 0 ? 'exit-left' : 'next');
+      else if (i === (currentIndex + 1) % catalog.length) el.classList.add('next');
+      else if (i === (currentIndex - 1 + catalog.length) % catalog.length) el.classList.add('prev');
+    });
+
+    applyTheme(item);
+
+    heroModel.textContent = item.modelLabel;
+    heroDesc.textContent = item.description;
+    heroPrice.textContent = `${item.price} EUR`;
+    heroPuffs.textContent = `${item.puffs.toLocaleString('fr-FR')} puffs`;
+
+    setHeroDevice(item);
+
+    slideCounter.textContent = `${String(currentIndex + 1).padStart(2, '0')} / ${String(catalog.length).padStart(2, '0')}`;
+
+    heartBtn.classList.toggle('active', isFavorite(item.id));
+    updateHeroRating();
+
+    // Animate visual
+    visualMain.style.transform = direction > 0 ? 'translateX(30px) scale(0.9)' : 'translateX(-30px) scale(0.9)';
+    visualMain.style.opacity = '0.5';
+
+    setTimeout(() => {
+      visualMain.style.transform = '';
+      visualMain.style.opacity = '';
+      hero.classList.remove('sliding');
+      isSliding = false;
+    }, 400);
+
+    visualPrev.style.setProperty('--hero-accent', prevItem.accent);
+  }
+
+  function nextSlide() { goToSlide(currentIndex + 1, 1); resetAutoplay(); }
+  function prevSlide() { goToSlide(currentIndex - 1, -1); resetAutoplay(); }
+
+  // ── Autoplay ──
+  function startAutoplay() {
+    stopAutoplay();
+    autoplayTimer = setInterval(nextSlide, 5000);
+  }
+
+  function stopAutoplay() {
+    if (autoplayTimer) clearInterval(autoplayTimer);
+  }
+
+  function resetAutoplay() {
+    stopAutoplay();
+    startAutoplay();
+  }
+
+  // ── Grid rendering ──
+  function getFilteredCatalog() {
+    let items = [...catalog];
+
+    if (activeFilter === '16K') items = items.filter(i => i.model === '16K');
+    else if (activeFilter === '18K') items = items.filter(i => i.model === '18K');
+    else if (activeFilter === 'favorites') items = items.filter(i => isFavorite(i.id));
+
+    if (searchQuery) {
+      const q = searchQuery.toLowerCase();
+      items = items.filter(i =>
+        i.name.toLowerCase().includes(q) ||
+        i.model.toLowerCase().includes(q) ||
+        i.tags.some(t => t.includes(q))
+      );
+    }
+
+    const sort = sortSelect?.value || 'name';
+    if (sort === 'name') items.sort((a, b) => a.name.localeCompare(b.name, 'fr'));
+    else if (sort === 'rating') items.sort((a, b) => getRating(b.id) - getRating(a.id));
+    else if (sort === 'price-asc') items.sort((a, b) => a.price - b.price);
+    else if (sort === 'price-desc') items.sort((a, b) => b.price - a.price);
+
+    return items;
+  }
+
+  function renderGrid() {
+    const items = getFilteredCatalog();
+    flavorGrid.innerHTML = '';
+    noResults.hidden = items.length > 0;
+
+    items.forEach((item, i) => {
+      const card = document.createElement('article');
+      card.className = 'flavor-card';
+      card.tabIndex = 0;
+      card.setAttribute('role', 'button');
+      card.setAttribute('aria-label', `${item.name} — ${item.modelLabel}, ${item.price} euros. Voir les détails.`);
+      card.style.setProperty('--card-accent', item.accent);
+      card.style.animationDelay = `${Math.min(i * 0.025, 0.5)}s`;
+      card.style.background = `linear-gradient(145deg, ${item.bg} 0%, rgba(10,10,15,0.95) 100%)`;
+
+      const rating = getRating(item.id);
+      const starsDisplay = rating ? '★'.repeat(rating) + '☆'.repeat(5 - rating) : '☆☆☆☆☆';
+
+      card.innerHTML = `
+        <div class="flavor-card-top">
+          <span class="flavor-model">${item.model} | ${item.price} EUR</span>
+          <button class="flavor-fav-btn${isFavorite(item.id) ? ' active' : ''}" aria-label="Favori">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+        </div>
+        <div class="flavor-thumb-wrap">${deviceSVG(item, { w: 96, h: 160, simple: true })}</div>
+        <h3 class="flavor-name">${item.name}</h3>
+        <div class="flavor-card-bottom">
+          <span class="flavor-price">${item.price} EUR</span>
+          <span class="flavor-stars">${starsDisplay}</span>
+        </div>
+      `;
+
+      card.querySelector('.flavor-fav-btn').addEventListener('click', e => {
+        e.stopPropagation();
+        toggleFavorite(item.id);
+        renderGrid();
+        heartBtn.classList.toggle('active', isFavorite(catalog[currentIndex].id));
+      });
+
+      card.addEventListener('click', () => openDetail(item));
+      card.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openDetail(item); }
+      });
+      flavorGrid.appendChild(card);
+    });
+  }
+
+  // ── Detail modal ──
+  function openDetail(item) {
+    const rating = getRating(item.id);
+    modalContent.innerHTML = `
+      <div class="modal-flavor-bg" style="background: radial-gradient(ellipse at 50% 30%, ${item.accent}22, transparent 70%)">
+        ${deviceSVG(item, { w: 160, h: 266 })}
+      </div>
+      <div class="modal-detail" style="padding: 1.5rem 2.5rem 2.5rem">
+        <p class="modal-model">${item.modelLabel}</p>
+        <h2>${item.name}</h2>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin: 0.75rem 0">${item.description}</p>
+        <div class="modal-specs">
+          <div class="modal-spec"><strong>${item.price} EUR</strong><span>Prix</span></div>
+          <div class="modal-spec"><strong>${item.puffs.toLocaleString('fr-FR')}</strong><span>Puffs</span></div>
+          <div class="modal-spec"><strong>${item.liquid}</strong><span>E-liquid</span></div>
+        </div>
+        <div class="rating-widget" style="margin-top: 1rem">
+          <span class="rating-label">Votre note</span>
+          <div class="stars" id="modalStars"></div>
+        </div>
+        <button class="arrow-btn" style="margin-top: 1.5rem; width: auto; padding: 0.6rem 1.5rem; border-radius: 100px" id="goToCarousel">
+          Voir dans le carousel ->
+        </button>
+      </div>
+    `;
+
+    renderStars(document.getElementById('modalStars'), item.id);
+    document.getElementById('goToCarousel').addEventListener('click', () => {
+      detailModal.close();
+      const idx = catalog.findIndex(c => c.id === item.id);
+      if (idx >= 0) {
+        goToSlide(idx);
+        document.getElementById('hero').scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+
+    detailModal.showModal();
+  }
+
+  // ── Stats ──
+  function updateStats() {
+    const rated = Object.keys(state.ratings).filter(k => state.ratings[k] > 0);
+    const favs = state.favorites.length;
+    const ratings = rated.map(k => state.ratings[k]);
+    const avg = ratings.length ? (ratings.reduce((a, b) => a + b, 0) / ratings.length).toFixed(1) : '-';
+
+    document.getElementById('statRated').textContent = rated.length;
+    document.getElementById('statFavs').textContent = favs;
+    document.getElementById('statAvg').textContent = avg;
+
+    const topItems = catalog
+      .filter(i => getRating(i.id) > 0)
+      .sort((a, b) => getRating(b.id) - getRating(a.id))
+      .slice(0, 5);
+
+    const topRated = document.getElementById('topRated');
+    const statTop = document.getElementById('statTop');
+
+    if (topItems.length) {
+      statTop.textContent = topItems[0].name.substring(0, 20) + (topItems[0].name.length > 20 ? '...' : '');
+      topRated.innerHTML = topItems.map((item, i) => `
+        <div class="top-item" data-id="${item.id}">
+          <span><span class="top-item-rank">#${i + 1}</span> ${item.name} <small style="opacity:0.5">(${item.model})</small></span>
+          <span class="top-item-stars">${'★'.repeat(getRating(item.id))}</span>
+        </div>
+      `).join('');
+
+      topRated.querySelectorAll('.top-item').forEach(el => {
+        el.addEventListener('click', () => {
+          const item = catalog.find(c => c.id === el.dataset.id);
+          if (item) openDetail(item);
+        });
+      });
+    } else {
+      statTop.textContent = '-';
+      topRated.innerHTML = '<p style="color: var(--text-muted); font-size: 0.88rem">Notez des goûts pour voir le classement.</p>';
+    }
+  }
+
+  function updateFavCount() {
+    document.getElementById('favCount').textContent = state.favorites.length;
+  }
+
+  function renderFavModal() {
+    if (!state.favorites.length) {
+      favList.innerHTML = '<p style="color: var(--text-muted); font-size: 0.88rem">Aucun favori pour le moment.</p>';
+      return;
+    }
+    favList.innerHTML = state.favorites.map(id => {
+      const item = catalog.find(c => c.id === id);
+      if (!item) return '';
+      return `<div class="fav-item" data-id="${id}"><span>${item.name}</span><small>${item.model} | ${item.price} EUR</small></div>`;
+    }).join('');
+
+    favList.querySelectorAll('.fav-item').forEach(el => {
+      el.addEventListener('click', () => {
+        const item = catalog.find(c => c.id === el.dataset.id);
+        favModal.close();
+        if (item) openDetail(item);
+      });
+    });
+  }
+
+  // ── Search jump ──
+  function jumpToSearch(query) {
+    if (!query) return;
+    const q = query.toLowerCase();
+    const idx = catalog.findIndex(i =>
+      i.name.toLowerCase().includes(q) ||
+      i.tags.some(t => t.includes(q))
+    );
+    if (idx >= 0) {
+      goToSlide(idx);
+      heroSearch.value = '';
+      catalogSearch.value = query;
+      searchQuery = query;
+      renderGrid();
+    }
+  }
+
+  // ── Event listeners ──
+  prevBtn.addEventListener('click', prevSlide);
+  nextBtn.addEventListener('click', nextSlide);
+  heartBtn.addEventListener('click', () => {
+    toggleFavorite(catalog[currentIndex].id);
+    heartBtn.classList.toggle('active', isFavorite(catalog[currentIndex].id));
+    renderGrid();
+  });
+
+  hero.addEventListener('mouseenter', stopAutoplay);
+  hero.addEventListener('mouseleave', startAutoplay);
+
+  // ── Parallaxe 3D du device (souris uniquement, pas en tactile) ──
+  const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  if (scene3d && tilt3d && canHover) {
+    hero.addEventListener('pointermove', e => {
+      const r = scene3d.getBoundingClientRect();
+      const px = (e.clientX - (r.left + r.width / 2)) / r.width;
+      const py = (e.clientY - (r.top + r.height / 2)) / r.height;
+      tilt3d.style.transform = `rotateY(${Math.max(-1, Math.min(1, px)) * 26}deg) rotateX(${Math.max(-1, Math.min(1, -py)) * 22}deg)`;
+    });
+    hero.addEventListener('pointerleave', () => { tilt3d.style.transform = ''; });
+  }
+
+  // Keyboard navigation
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight') nextSlide();
+    if (e.key === 'ArrowLeft') prevSlide();
+    if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+      e.preventDefault();
+      heroSearch.focus();
+    }
+    if (e.key === 'Escape') {
+      detailModal.close();
+      favModal.close();
+    }
+  });
+
+  // Touch swipe
+  let touchStartX = 0;
+  hero.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+  hero.addEventListener('touchend', e => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) diff > 0 ? nextSlide() : prevSlide();
+  }, { passive: true });
+
+  heroSearch.addEventListener('input', e => {
+    const val = e.target.value.trim();
+    if (val.length >= 2) jumpToSearch(val);
+  });
+
+  heroSearch.addEventListener('keydown', e => {
+    if (e.key === 'Enter') jumpToSearch(e.target.value.trim());
+  });
+
+  catalogSearch.addEventListener('input', e => {
+    searchQuery = e.target.value.trim();
+    renderGrid();
+  });
+
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeFilter = btn.dataset.filter;
+      renderGrid();
+    });
+  });
+
+  sortSelect.addEventListener('change', renderGrid);
+
+  document.getElementById('modalClose').addEventListener('click', () => detailModal.close());
+  document.getElementById('favModalClose').addEventListener('click', () => favModal.close());
+  document.getElementById('favHeaderBtn').addEventListener('click', () => {
+    renderFavModal();
+    favModal.showModal();
+  });
+
+  // Nav active state
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-link');
+
+  window.addEventListener('scroll', () => {
+    document.querySelector('.header').classList.toggle('scrolled', window.scrollY > 50);
+
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 200) current = s.id;
+    });
+    navLinks.forEach(link => {
+      link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
+    });
+  }, { passive: true });
+
+  // Mobile menu
+  document.getElementById('menuBtn').addEventListener('click', () => {
+    document.querySelector('.nav-glass').classList.toggle('open');
+  });
+
+  // Price card click -> filter
+  document.querySelectorAll('.price-card').forEach(card => {
+    card.addEventListener('click', () => {
+      activeFilter = card.dataset.model;
+      document.querySelectorAll('.filter-btn').forEach(b => {
+        b.classList.toggle('active', b.dataset.filter === activeFilter);
+      });
+      renderGrid();
+      document.getElementById('catalogue').scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  function initHero() {
+    const item = catalog[0];
+    applyTheme(item);
+    heroModel.textContent = item.modelLabel;
+    heroDesc.textContent = item.description;
+    heroPrice.textContent = `${item.price} EUR`;
+    heroPuffs.textContent = `${item.puffs.toLocaleString('fr-FR')} puffs`;
+    setHeroDevice(item);
+    slideCounter.textContent = `01 / ${String(catalog.length).padStart(2, '0')}`;
+    heartBtn.classList.toggle('active', isFavorite(item.id));
+    updateHeroRating();
+  }
+
+  // ── Init ──
+  const count16 = catalog.filter(i => i.model === '16K').length;
+  const count18 = catalog.filter(i => i.model === '18K').length;
+  document.getElementById('totalCount').textContent = catalog.length;
+  document.getElementById('footerCount').textContent = catalog.length;
+  document.getElementById('count16Badge').textContent = `${count16} saveurs`;
+  document.getElementById('count18Badge').textContent = `${count18} saveurs`;
+
+  initTitleTrack();
+  initHero();
+  renderGrid();
+  updateStats();
+  updateFavCount();
+  startAutoplay();
+
+})();
+
+</script>
+</body>
+</html>
